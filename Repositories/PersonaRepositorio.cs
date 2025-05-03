@@ -9,20 +9,22 @@ namespace jdelgadoS5A.Repositories
         private SQLiteConnection conn;
 
         public string statusMessage { get; set; }
-        public PersonaRepositorio(string path)
-        {
-            dbPath = path;
 
-        }
+
 
         private void Init()
         {
             if (conn is not null)
-            {
                 return;
-                conn = new(dbPath);
-                conn.CreateTable<Persona>();
-            }
+            conn = new(dbPath);
+            conn.CreateTable<Persona>();
+
+        }
+
+        public PersonaRepositorio(string path)
+        {
+            dbPath = path;
+
         }
 
         public void AddPersona(String nombre)
@@ -33,22 +35,15 @@ namespace jdelgadoS5A.Repositories
             {
                 Init();
                 if (string.IsNullOrEmpty(nombre))
-                {
                     throw new Exception("Persona no puede ser nulo");
 
-
-                }
                 Persona person = new() { Nombre = nombre };
-                person.Nombre = person.Nombre;
                 result = conn.Insert(person);
-                statusMessage = "Dato Ingresado";
-
-                return;
-
+                statusMessage = string.Format("Dato Ingresado: {0} (Nombre:{1})", result, nombre);
             }
             catch (Exception ex)
             {
-                statusMessage = $"Error: {ex.Message}";
+                statusMessage = string.Format("Error al Ingresar: {0} (Nombre:{1})", nombre, ex.Message);
             }
 
         }

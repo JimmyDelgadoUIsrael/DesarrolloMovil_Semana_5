@@ -2,6 +2,7 @@
 
 namespace jdelgadoS5A.Models
 {
+    [Table("persona")]
     public class Persona
     {
         [PrimaryKey, AutoIncrement]

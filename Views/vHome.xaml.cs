@@ -12,7 +12,6 @@ public partial class vHome : ContentPage
         lblInfo.Text = "";
         App.personaRepo.AddPersona(txtNombre.Text);
         lblInfo.Text = App.personaRepo.statusMessage;
-        txtNombre.Text = App.personaRepo.statusMessage;
     }
 
     private void btnListar_Clicked(object sender, EventArgs e)
