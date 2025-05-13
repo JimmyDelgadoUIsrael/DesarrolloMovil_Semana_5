@@ -10,8 +10,6 @@ namespace jdelgadoS5A.Repositories
 
         public string statusMessage { get; set; }
 
-
-
         private void Init()
         {
             if (conn is not null)

@@ -1,84 +1,114 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="jdelgadoS5A.Views.vHome"
-             Title="vHome">
+<ContentPage
+    x:Class="jdelgadoS5A.Views.vHome"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="vHome">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
-            <Label 
-        Text="Semana 5 SQLite"
-        FontSize="20"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-            <Label Text="By: Jimmy Delgado"
-                   FontSize="15"
-                   HorizontalOptions="Center"/>
+        <VerticalStackLayout Padding="15" Spacing="15">
+            <Label
+                FontSize="25"
+                HorizontalOptions="Center"
+                Text="Semana 5 SQLite"
+                TextColor="Red"
+                VerticalOptions="Center" />
 
-            <Entry
-                x:Name="txtNombre"
-                Placeholder="Ingrese el Nombre"/>
+            <Label
+                FontSize="15"
+                HorizontalOptions="Center"
+                Text="By: Jimmy Delgado" />
+
+            <Entry x:Name="txtNombre" Placeholder="Ingrese el Nombre" />
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btnInsertar"
-                        Text="Insertar"
-                        Clicked="btnInsertar_Clicked"
-                        Grid.Row="0"
-                        Grid.Column="0"/>
+                <Button
+                    x:Name="btnInsertar"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0,0,0,10"
+                    Clicked="btnInsertar_Clicked"
+                    Text="Insertar" />
 
-                <Label x:Name="lblInfo"
-                       FontSize="18"
-                       TextColor="Red"
-                       Grid.Row="1"
-                       Grid.Column="0"
-                       HorizontalTextAlignment="Center"/>
+                <Label
+                    x:Name="lblInfo"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontSize="18"
+                    HorizontalTextAlignment="Center"
+                    TextColor="Gray" />
 
-                <Button x:Name="btnListar"
-                        Text="Listar"
-                        Clicked="btnListar_Clicked"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        BackgroundColor="Gray"/>
+                <Button
+                    x:Name="btnListar"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="0,0,0,10"
+                    BackgroundColor="Gray"
+                    Clicked="btnListar_Clicked"
+                    Text="Listar" />
 
-                <CollectionView x:Name="listPersonas"
-                                Grid.Row="3">
-
+                <CollectionView x:Name="listPersonas" Grid.Row="3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                
+                            <Grid Padding="5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="5,0"
+                                    Text="{Binding Id}" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="5,0"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Nombre}" />
+                                <Button
+                                    x:Name="btnEditar"
+                                    Grid.Column="2"
+                                    Margin="5,0"
+                                    BackgroundColor="LightYellow"
+                                    TextColor="Black"
+                                    Clicked="btnEditar_Clicked"
+                                    CommandParameter="{Binding .}"
+                                    Text="Editar"
+                                    WidthRequest="80" />
 
-                                <Label Text="{Binding Id}"
-                                       Grid.Column="0"/>
-
-                                <Label Text="{Binding Nombre}"
-                                       Grid.Column="1"/>
-                                
+                                <Button
+                                    x:Name="btnEliminar"
+                                    Grid.Column="3"
+                                    Margin="5,0"
+                                    BackgroundColor="LightPink"
+                                    TextColor="Black"
+                                    Clicked="btnEliminar_Clicked"
+                                    CommandParameter="{Binding .}"
+                                    Text="Eliminar"
+                                    WidthRequest="85" />
                             </Grid>
+
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                    
+
                 </CollectionView>
-                
-               
+
+
 
 
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
-    
+
 </ContentPage>
